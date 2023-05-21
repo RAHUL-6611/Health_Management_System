@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medcare-deployment
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eksmedcareapp
+  template:
+    metadata:
+      labels:
+        app: eksmedcareapp
+    spec:
+      containers:
+        - name: medcare
+          image: 901773795984.dkr.ecr.ap-south-1.amazonaws.com/medcareapp:latest
+          ports:
+            - containerPort: 8080

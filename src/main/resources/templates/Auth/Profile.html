@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/profile.css}" />
+</head>
+<body>
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+
+<div class="container rounded bg-white mt-5 h-100">
+    <div class="row justify-content-evenly " style="margin-top: 14em;">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold fs-1" th:text="${logInfoDetails.firstName + logInfoDetails.lastName}">Medcare</span>
+                <span class="text-black-50 fs-2" th:text="${logInfoDetails.username}"></span>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right fs-2">Profile Settings</h4>
+                    <h3 style="color: red" sec:authorize="hasAuthority('ADMIN')" ><a href="/admin" style="text-decoration: none">Admin DashBoard</a></h3>
+                    <h3 style="color: red" sec:authorize="hasAnyAuthority('USER','ADMIN') " ><a href="#" style="text-decoration: none">Application request</a></h3>
+                </div>
+                <form th:action="@{/profile/processDetailsUpdate}" method="post" th:object="${userInfo}">
+                <div class="row mt-2">
+                    <div class="col-md-12 fs-3"><label class="labels">Full Name</label>
+                        <input type="text" class="form-control fs-3" placeholder="first name" th:value="${logInfoDetails.firstName + logInfoDetails.lastName}"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12 fs-3"><label class="labels">Mobile Number</label>
+                        <input type="text" class="form-control fs-3" placeholder="enter phone number" th:value="${logInfoDetails.mobileNo}"></div>
+                    <div class="col-md-12 fs-3"><label class="labels">Email ID</label>
+                        <input type="text" class="form-control fs-3" placeholder="enter email id" th:value="${logInfoDetails.username}"></div>
+                    <div class="col-md-12 fs-3"><label class="labels">Address Line 1</label>
+                        <input type="text" class="form-control fs-3" placeholder="enter address line 1" th:value="${logInfoDetails.addressLine1}"></div>
+                    <div class="col-md-12 fs-3"><label class="labels">Address Line 2</label>
+                        <input type="text" class="form-control fs-3" placeholder="enter address line 2" th:value="${logInfoDetails.addressLine2}"></div>
+                    <div class="col-md-12 fs-3"><label class="labels">State</label>
+                        <input type="text" class="form-control fs-3" placeholder="enter address line 2" th:value="${logInfoDetails.state}"></div>
+                    <div class="col-md-6 fs-3"><label class="labels">Country</label>
+                        <input type="text" class="form-control fs-3" placeholder="country" th:value="${logInfoDetails.country}"></div>
+                </div>
+                <div class="mt-5 text-center w-25 h-25">
+<!--                    <button class="btn btn-primary profile-button fs-3" type="submit">Save Profile</button>-->
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

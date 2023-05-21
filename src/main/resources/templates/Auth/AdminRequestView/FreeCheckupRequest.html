@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>FreeCheckupRequest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+
+<section class="doctors" id="doctors">
+    <h1 class="heading"> Admin <span>Dashboard</span> </h1>
+    <div class="cards-list">
+        <ul class="nav nav-tabs w-100 h-50 fs-2">
+            <li class="nav-item">
+                <a class="nav-link " href="/admin">Patient</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/ambulanceRequest">Ambulance Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/bedFacilityRequest">BedFacility Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/admin/freeCheckupRequest">FreeCheckup Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/medicineRequest">Medicine Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/totalCareRequest">TotalCare Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/appointmentRequest">Appointment Request</a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <table class="table fs-3">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Issue</th>
+            <th scope="col">Date</th>
+            <th scope="col">Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="freeCheckupServices, freeCheckupServiceState : ${freeCheckupServicesList}">
+            <th scope="row" th:text="${freeCheckupServices.id}"/>
+            <td th:text="${freeCheckupServices.name}"/>
+            <td th:text="${freeCheckupServices.phoneNumber}"/>
+            <td th:text="${freeCheckupServices.email}"/>
+            <td th:text="${freeCheckupServices.issue}"/>
+            <td th:text="${freeCheckupServices.date}"/>
+            <td>
+                <a class="btn btn-success"
+                   th:if="${!freeCheckupServices.status}"
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{acceptfreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Accept</a>
+                <a class="btn btn-success"
+                   th:if="${freeCheckupServices.status}"
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{rejectfreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Reject</a>
+                <a class="btn btn-success "
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{deletefreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript"  th:src="@{/js/admin.js}"></script>
+</body>
+</html>

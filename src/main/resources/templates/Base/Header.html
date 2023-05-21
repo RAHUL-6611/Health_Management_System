@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/login.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+
+<header class="header" style="underline:none" th:fragment="navbar">
+    <p><i class="fas fa-heartbeat"></i> MedCare</p>
+    <nav class="navbar">
+        <a href="/" >Home</a>
+        <a href="/services">services</a>
+        <a href="/about">about</a>
+        <a href="/doctor">doctors</a>
+<!--        <a href="/bookAppointment">book</a>-->
+        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>
+        </form>
+        <form th:action="@{/login}" method="get" sec:authorize="!isAuthenticated()">
+            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign In"/>
+        </form>
+    </nav>
+    <div id="menu-btn" class="fas fa-bars"></div>
+</header>
+</body>
+</html>
