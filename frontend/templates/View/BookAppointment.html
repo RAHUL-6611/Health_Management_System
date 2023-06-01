@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+<section class="book" id="book">
+
+    <h1 class="heading"> <span>book</span> now </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img th:src="@{/image/book-img.svg}"  alt="">
+        </div>
+
+        <form th:action="@{/applyAppointment}" method="post" th:object="${appointmentInfo}" >
+            <h3>book appointment</h3>
+            <input type="text" th:field="*{name}" placeholder="Full Name" id="name" class="box" >
+            <input type="tel" placeholder="Mobile Number" class="box" id="mobileNo" th:field="*{mobileNo}">
+            <input type="email" placeholder="Email" class="box" id="email" th:field="*{email}">
+            <input title="date" type="date"  class="box" id="date" th:field="*{date}">
+            <button type="submit" class="btn">Book Now</button>
+        </form>
+
+    </div>
+
+</section>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

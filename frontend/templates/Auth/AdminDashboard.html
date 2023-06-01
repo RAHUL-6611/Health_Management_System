@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+
+<section class="doctors" id="doctors">
+    <h1 class="heading"> Admin <span>Dashboard</span> </h1>
+    <div class="cards-list">
+<ul class="nav nav-tabs w-100 h-50 fs-2">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/admin">Patient</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/ambulanceRequest">Ambulance Request</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/bedFacilityRequest">BedFacility Request</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/freeCheckupRequest">FreeCheckup Request</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/medicineRequest">Medicine Request</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/totalCareRequest">TotalCare Request</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/appointmentRequest">Appointment Request</a>
+    </li>
+</ul>
+    </div>
+    </section>
+<section>
+    <table class="table fs-3">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Username</th>
+            <th scope="col">MobileNo</th>
+            <th scope="col">Address Line 1</th>
+            <th scope="col">Address Line 2</th>
+            <th scope="col">State</th>
+            <th scope="col">Country</th>
+            <th scope="col">Enabled</th>
+            <th scope="col">Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient, patientState : ${patients}">
+            <th scope="row" th:text="${patient.id}"/>
+            <td th:text="${patient.firstName}"/>
+            <td th:text="${patient.lastName}"/>
+            <td th:text="${patient.username}"/>
+            <td th:text="${patient.mobileNo}"/>
+            <td th:text="${patient.addressLine1}"/>
+            <td th:text="${patient.addressLine2}"/>
+            <td th:text="${patient.state}"/>
+            <td th:text="${patient.country}"/>
+            <td th:text="${patient.enabled}"/>
+            <td th:text="${patient.role}"/>
+
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript"  th:src="@{/js/admin.js}"></script>
+</body>
+</html>

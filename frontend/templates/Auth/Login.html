@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/login.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+<!--<header class="header">-->
+<!--    <p><i class="fas fa-heartbeat"></i> MedCare</p>-->
+<!--    <nav class="navbar">-->
+<!--        <a href="/" >Home</a>-->
+<!--        <a href="/services">services</a>-->
+<!--        <a href="/about">about</a>-->
+<!--        <a href="/doctor">doctors</a>-->
+<!--        <a href="/bookAppointment">book</a>-->
+<!--        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>-->
+<!--        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">-->
+<!--            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>-->
+<!--        </form>-->
+<!--    </nav>-->
+<!--    <div id="menu-btn" class="fas fa-bars"></div>-->
+<!--</header>-->
+
+<section class="login">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form th:action="@{/process-login}" method="post">
+            <h3>Login Here</h3>
+
+            <label for="username">Username</label>
+            <input type="text" placeholder="Email or Phone" id="username" name="username">
+
+            <label for="password">Password</label>
+            <input type="password" placeholder="Password" id="password" name="password">
+
+            <button type="submit">Log In</button>
+            <div class="social">
+                <div class="go"><i class="fab fa-google"></i>  Google</div>
+                <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            </div>
+            <div class="link">
+                <a th:href="@{/registration}"> Register </a>
+            </div>
+        </form>
+</section>
+
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/login.js}"></script>
+</body>
+</html>

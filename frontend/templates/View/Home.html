@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+  <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+  <div class="image">
+    <img th:src="@{/image/home-img.svg}" alt=""/>
+  </div>
+
+  <div class="content">
+    <h3>stay safe, stay healthy</h3>
+    <p>Hello! Always caring about your health, we are here to help you! MedCare is the leading Multi specialty health care unit with best in class treatments</p>
+  </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- icons section starts  -->
+
+<section class="icons-container">
+
+  <div class="icons">
+    <i class="fas fa-user-md"></i>
+    <h3>140+</h3>
+    <p>doctors at work</p>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-users"></i>
+    <h3>1040+</h3>
+    <p>satisfied patients</p>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-procedures"></i>
+    <h3>500+</h3>
+    <p>bed facility</p>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-hospital"></i>
+    <h3>80+</h3>
+    <p>available hospitals</p>
+  </div>
+
+</section>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

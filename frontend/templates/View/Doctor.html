@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+<!-- card section start -->
+<section class="doctors" id="doctors">
+    <h1 class="heading"> our <span>doctors</span> </h1>
+    <div class="cards-list">
+
+        <div class="card 1">
+            <div class="card_image"> <img th:src="@{/image/doc-1.jpg}" /> </div>
+            <div class="card_title title-black">
+                <p>Dr.Disha Chavan</p>
+            </div>
+        </div>
+
+        <div class="card 2">
+            <div class="card_image">
+                <img th:src="@{/image/doc-2.jpg}" />
+            </div>
+            <div class="card_title title-black">
+                <p>Dr. Akash Tandale</p>
+            </div>
+        </div>
+
+        <div class="card 3">
+            <div class="card_image">
+                <img th:src="@{/image/doc-3.jpg}" />
+            </div>
+            <div class="card_title">
+                <p>Dr. Shital Varma</p>
+            </div>
+        </div>
+
+        <div class="card 4">
+            <div class="card_image">
+                <img th:src="@{/image/doc-4.jpg}"  />
+            </div>
+            <div class="card_title title-black">
+                <p>Dr. Virat Kohli</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+<!--      th:fragment="Layout(content)">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/Sidebar.css}"/>
+</head>
+<body>
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+
+<nav>
+    <ul>
+        <li>
+            <a href="/" class="item">Patient User</a>
+        </li>
+        <li>
+            <a href="/" class="item">Ambulance Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">Appointment Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">BedFacility Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">Free Checkup Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">Medicine Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">Total Care Request</a>
+        </li>
+        <li>
+            <a href="/" class="item">Staff</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="wrapper">
+<!--    <div class="section" th:replace="${content}">-->
+
+<!--    </div>-->
+</div>
+
+
+</body>
+</html>

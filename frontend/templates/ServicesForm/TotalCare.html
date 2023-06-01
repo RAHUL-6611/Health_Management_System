@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Total Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+
+<!--header section Start -->
+
+<header th:replace="Base/Header::navbar"/>
+
+<!-- header section ends -->
+<section class="book" id="book" style="margin-top: 6em">
+
+    <h1 class="heading"> <span>Total</span> Care </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img th:src="@{/image/book-img.svg}"  alt="">
+        </div>
+
+        <form th:action="@{/services/applyTotalCare}" th:object="${totalCareInfo}" th:method="post">
+            <h3>book totalCare</h3>
+            <input type="text" placeholder="Name" class="box" th:field="*{name}">
+            <input type="tel" placeholder="Phone Number" class="box" th:field="*{phoneNumber}">
+            <input placeholder="Family Size" type="number" class="box" th:field="*{familySize}">
+            <input type="submit" value="book now" class="btn">
+        </form>
+
+    </div>
+
+</section>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
